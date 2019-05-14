@@ -1,0 +1,15 @@
+<h1><%= @task.title %> <%= link_to 'X', task_path(@task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %> </h1>
+<p><%= @task.details %> </p>
+<% if @task.completed %>
+<p>This task is completed</p>
+<% else %>
+<p>This task is not completed</p>
+<% end %>
+
+<div class="links d-flex justify-content-around">
+<%= link_to 'Back to list', index_path, class: 'btn btn-primary' %> <br>
+<%= link_to 'Update task', edit_path, class: 'btn btn-primary' %>
+</div>
+

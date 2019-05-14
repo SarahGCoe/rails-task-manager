@@ -1,0 +1,12 @@
+
+<h1>My tasks</h1>
+<!-- , class:'custom-control-label' -->
+<div class="custom-control custom-checkbox">
+  <% @tasks.each do |task| %>
+    <%= form_for(task) do |f| %>
+      <label><%= link_to task.title, task_path(task) %> </label>
+      <%= f.check_box task, checked: task.completed  %>
+    <% end %>
+  <% end %>
+</div>
+<%= link_to 'Create new', tasks_new_path, class: 'btn btn-primary' %>
