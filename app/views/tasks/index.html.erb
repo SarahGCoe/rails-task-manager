@@ -1,12 +1,25 @@
 
 <h1>My tasks</h1>
-<!-- , class:'custom-control-label' -->
-<div class="custom-control custom-checkbox">
+
+<ul id="tasks">
   <% @tasks.each do |task| %>
-    <%= form_for(task) do |f| %>
-      <label><%= link_to task.title, task_path(task) %> </label>
-      <%= f.check_box task, checked: task.completed  %>
-    <% end %>
+    <li>
+      <% if task.completed %>
+        <i class="fa fa-check-square-o"></i>
+      <% else %>
+        <i class="fa fa-square-o"></i>
+      <% end %>
+      <%= link_to task.title, task_path(task.id) %>
+      ·
+      <%= link_to task_path(task.id), method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      <% end %>
+    </li>
   <% end %>
-</div>
-<%= link_to 'Create new', tasks_new_path, class: 'btn btn-primary' %>
+</ul>
+
+<hr>
+
+<%= link_to tasks_new_path do %>
+  <i class="fa fa-plus"></i> Add a new task
+<% end %>

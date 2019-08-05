@@ -1,15 +1,19 @@
+<%= link_to edit_path(@task.id), class: 'pull-right btn btn-default' do %>
+  <i class="fa fa-pencil"></i> Edit this task
+<% end %>
 <h1><%= @task.title %> <%= link_to 'X', task_path(@task),
       method: :delete,
-      data: { confirm: "Are you sure?" } %> </h1>
-<p><%= @task.details %> </p>
+      data: { confirm: "Are you sure?" } %>  </h1>
+
+<p class="well"><%= @task.details %></p>
+
 <% if @task.completed %>
-<p>This task is completed</p>
+  <i class="fa fa-check-square-o"></i> This task is completed
 <% else %>
-<p>This task is not completed</p>
+  <i class="fa fa-square-o"></i> This task is not completed yet
 <% end %>
 
-<div class="links d-flex justify-content-around">
-<%= link_to 'Back to list', index_path, class: 'btn btn-primary' %> <br>
-<%= link_to 'Update task', edit_path, class: 'btn btn-primary' %>
-</div>
-
+<hr>
+<%= link_to tasks_path do %>
+  <i class="fa fa-history"></i> Back to list
+<% end %>
